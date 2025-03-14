@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F7F2FBC9-45F1-46A8-8281-85B044FCCE38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{5F750078-F896-48FD-998E-E7F71366F77D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{AF3F4D1C-24B1-4925-9F95-8C5F2EBCE129}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transware.UI", "UI\Transware.UI\Transware.UI.csproj", "{2E7582FC-2FBC-4EBA-9002-D74BCE572F6F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transware.Entities", "DB\Transware.Entities\Transware.Entities.csproj", "{81F4EFC7-AF39-4664-887E-59D8B2948F86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transware.API", "API\Transware.API\Transware.API.csproj", "{46A37663-820C-4E96-8206-0067C7754384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transware.API.Model", "API\Transware.API.Model\Transware.API.Model.csproj", "{3A3830BE-58B8-4A80-9288-844FAA70129E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E7582FC-2FBC-4EBA-9002-D74BCE572F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7582FC-2FBC-4EBA-9002-D74BCE572F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7582FC-2FBC-4EBA-9002-D74BCE572F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7582FC-2FBC-4EBA-9002-D74BCE572F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81F4EFC7-AF39-4664-887E-59D8B2948F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81F4EFC7-AF39-4664-887E-59D8B2948F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81F4EFC7-AF39-4664-887E-59D8B2948F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81F4EFC7-AF39-4664-887E-59D8B2948F86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A37663-820C-4E96-8206-0067C7754384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A37663-820C-4E96-8206-0067C7754384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A37663-820C-4E96-8206-0067C7754384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A37663-820C-4E96-8206-0067C7754384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A3830BE-58B8-4A80-9288-844FAA70129E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3830BE-58B8-4A80-9288-844FAA70129E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3830BE-58B8-4A80-9288-844FAA70129E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3830BE-58B8-4A80-9288-844FAA70129E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E7582FC-2FBC-4EBA-9002-D74BCE572F6F} = {AF3F4D1C-24B1-4925-9F95-8C5F2EBCE129}
+		{81F4EFC7-AF39-4664-887E-59D8B2948F86} = {5F750078-F896-48FD-998E-E7F71366F77D}
+		{46A37663-820C-4E96-8206-0067C7754384} = {F7F2FBC9-45F1-46A8-8281-85B044FCCE38}
+		{3A3830BE-58B8-4A80-9288-844FAA70129E} = {F7F2FBC9-45F1-46A8-8281-85B044FCCE38}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D263D77-697D-433A-A116-E663AF981429}
+	EndGlobalSection
+EndGlobal

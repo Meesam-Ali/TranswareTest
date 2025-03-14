@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Transware.BlazorTest/UI/Transware.UI/obj/Debug/net8.0
+/.vs
+/Transware.BlazorTest/.vs/Transware.BlazorTest
+/Transware.BlazorTest/API/Transware.API/Transware.API.csproj.user
+/Transware.BlazorTest/API/Transware.API.Model/bin/Debug/net8.0
+/Transware.BlazorTest/API/Transware.API.Model/obj
+*.user

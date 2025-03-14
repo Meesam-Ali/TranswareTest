@@ -1,0 +1,6 @@
+@Transware.API_HostAddress = http://localhost:5226
+
+GET {{Transware.API_HostAddress}}/template/
+Accept: application/json
+
+###
