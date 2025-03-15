@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DB\Transware.DB\Transware.DB.csproj" />
     <ProjectReference Include="..\Transware.API.Model\Transware.API.Model.csproj" />
   </ItemGroup>
 

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transware.API", "API\Transw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transware.API.Model", "API\Transware.API.Model\Transware.API.Model.csproj", "{3A3830BE-58B8-4A80-9288-844FAA70129E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transware.DB", "DB\Transware.DB\Transware.DB.csproj", "{AC85E07F-92CC-43FC-86EE-BC705C1534A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3A3830BE-58B8-4A80-9288-844FAA70129E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A3830BE-58B8-4A80-9288-844FAA70129E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A3830BE-58B8-4A80-9288-844FAA70129E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC85E07F-92CC-43FC-86EE-BC705C1534A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC85E07F-92CC-43FC-86EE-BC705C1534A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC85E07F-92CC-43FC-86EE-BC705C1534A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC85E07F-92CC-43FC-86EE-BC705C1534A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{81F4EFC7-AF39-4664-887E-59D8B2948F86} = {5F750078-F896-48FD-998E-E7F71366F77D}
 		{46A37663-820C-4E96-8206-0067C7754384} = {F7F2FBC9-45F1-46A8-8281-85B044FCCE38}
 		{3A3830BE-58B8-4A80-9288-844FAA70129E} = {F7F2FBC9-45F1-46A8-8281-85B044FCCE38}
+		{AC85E07F-92CC-43FC-86EE-BC705C1534A5} = {5F750078-F896-48FD-998E-E7F71366F77D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D263D77-697D-433A-A116-E663AF981429}

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace Transware.Entities
 {
@@ -9,7 +8,7 @@ namespace Transware.Entities
         public string Name { get; set; }
 
         [Column(name: "Execution-Time")]
-        public DateTime ExecutionTime { get; set; }
+        public int ExecutionTime { get; set; }
 
         public Dictionary<string, DataType> Attributes { get; set; }
     }

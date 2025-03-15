@@ -1,6 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Transware.API.Model;
+using Transware.API.Utilities;
+using Transware.DB;
+using Transware.Entities;
 
 namespace Transware.API.Controllers
 {
@@ -9,24 +13,6 @@ namespace Transware.API.Controllers
     public class TemplateController : ControllerBase
     {
         private readonly ILogger<TemplateController> _logger;
-        private List<Template?> _templates =
-        [
-            new()
-            {
-                Name = "Template1",
-                Id = 1,
-                Folder = new Folder() { Id = 2, Name = "First", ParentFolder = new Folder() { Id = 1, Name = "Root" } },
-                Attributes = new Dictionary<string, DataType>(){{"Name",DataType.Text}, { "Reason", DataType.Text } }
-            },
-            new()
-            {
-                Name = "Template2",
-                Id = 2,
-                Folder = new Folder() { Id = 3, Name = "Second", ParentFolder = new Folder() { Id = 1, Name = "Root" } },
-                Attributes = new Dictionary<string, DataType>(){{"Name",DataType.Text}, { "Reason", DataType.Text } }
-            }
-        ];
-
         public TemplateController(ILogger<TemplateController> logger)
         {
             _logger = logger;
@@ -36,7 +22,7 @@ namespace Transware.API.Controllers
         public IEnumerable<Dictionary<string, object>> Get()
         {
             List<Dictionary<string, object>> retVal = new();
-            foreach (var template in _templates)
+            foreach (var template in DatabaseContext.GetInstance().Templates)
             {
                 var dict = new Dictionary<string, object>() { { "Id", template.Id }, { "Name", template.Name } };
                 retVal.Add(dict);
@@ -45,17 +31,27 @@ namespace Transware.API.Controllers
         }
 
         [HttpGet("get-template/{id}")]
-        public Template Get(int id)
+        public IActionResult Get(int id)
         {
-            return _templates.FirstOrDefault(x => x.Id == id) ?? null;
+            var template = Mapper.GetTemplateModel(DatabaseContext.GetInstance().Templates.FirstOrDefault(x => x.Id == id));
+            return template != null ? StatusCode(StatusCodes.Status200OK, template) : StatusCode(StatusCodes.Status404NotFound);
         }
 
         [HttpPut("execute-template/{id}")]
-        public DateTime Execute(int id, [FromBody] Dictionary<string, KeyValuePair<DataType, string>> Attributes)
+        public DateTime Execute(int id, [FromBody] Dictionary<string, KeyValuePair<Model.DataType, string>> Attributes)
         {
-            //TODO: Fetch the template and insert Execution
-
-            return DateTime.UtcNow;
+            var template = Mapper.GetTemplateModel(DatabaseContext.GetInstance().Templates.FirstOrDefault(x => x.Id == id));
+            Model.Execution execution = new Model.Execution();
+            execution.Id = DatabaseContext.GetInstance().Executions.Count > 0 ? DatabaseContext.GetInstance().Executions.Max(x => x.Id) + 1 : 1;
+            execution.Status = Model.Status.Running;
+            execution.StartTime = DateTime.UtcNow;
+            execution.EndTime = DateTime.UtcNow.AddMinutes(template.ExecutionTime);
+            execution.Attributes = Attributes;
+            execution.Folder = template.Folder;
+            execution.Name = "Execution-" + template.Name + "-" + DateTime.UtcNow.ToString();
+            execution.Template = template;
+            DatabaseContext.GetInstance().Executions.Add(Mapper.GetExecutionEntities(execution));
+            return execution.StartTime;
         }
     }
 }

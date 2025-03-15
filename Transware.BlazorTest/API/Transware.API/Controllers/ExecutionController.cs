@@ -1,6 +1,9 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Transware.API.Model;
+using Transware.API.Utilities;
+using Transware.DB;
+using Transware.Entities;
 
 namespace Transware.API.Controllers
 {
@@ -9,27 +12,6 @@ namespace Transware.API.Controllers
     public class ExecutionController : ControllerBase
     {
         private readonly ILogger<ExecutionController> _logger;
-        private List<Execution?> _executions =
-        [
-            new()
-            {
-                Name = "Execution Of Template 1",
-                Id = 1,
-                Status = Status.Running,
-                StartTime = DateTime.UtcNow,
-                TemplateId = 1
-            },
-            new()
-            {
-                Name = "Execution Of Template 2",
-                Id = 2,
-                Status = Status.Finished,
-                StartTime = DateTime.UtcNow.AddDays(-1),
-                EndTime = DateTime.UtcNow.AddHours(-12),
-                TemplateId = 2
-            }
-        ];
-
         public ExecutionController(ILogger<ExecutionController> logger)
         {
             _logger = logger;
@@ -39,32 +21,41 @@ namespace Transware.API.Controllers
         public IEnumerable<Dictionary<string, object>> Get()
         {
             List<Dictionary<string, object>> retVal = new();
-            foreach (var execution in _executions)
+            foreach (var execution in DatabaseContext.GetInstance().Executions)
             {
-                var dict = new Dictionary<string, object>() { { "Id", execution.Id }, { "Name", execution.Name } };
+                var dict = new Dictionary<string, object>() { { "Id", execution.Id }, { "Name", execution.Name }, { "Status", execution.Status } };
                 retVal.Add(dict);
             }
             return retVal;
         }
 
         [HttpGet("get-execution/{id}")]
-        public Execution Get(int id)
+        public IActionResult Get(int id)
         {
-            return _executions.FirstOrDefault(x => x.Id == id) ?? null;
+            var exec = Mapper.GetExecutionModel(DatabaseContext.GetInstance().Executions.FirstOrDefault(x => x.Id == id));
+            return exec != null ? StatusCode(StatusCodes.Status200OK, exec) : StatusCode(StatusCodes.Status404NotFound);
         }
 
         [HttpGet("abort-execution/{id}")]
         public IActionResult Abort(int id)
         {
-            var execution = _executions.FirstOrDefault(x => x.Id == id) ?? null;
-            if (execution.Status != Status.Running)
+            var execution = DatabaseContext.GetInstance().Executions.FirstOrDefault(x => x.Id == id);
+            if (execution.Status != Entities.Status.Running)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
             else
             {
-                execution.Status = Status.Aborted;
-                //TODO : SAVE
+                execution.Status = Entities.Status.Aborted;
+                var result = new Entities.Result();
+                result.Attributes = execution.Attributes;
+                result.ExecutionId = execution.Id;
+                result.FolderId = execution.FolderId;
+                result.Name = execution.Name + "-result";
+                result.TimeRequired = (DateTime.UtcNow - execution.StartTime).TotalMinutes;
+                result.Id = DatabaseContext.GetInstance().Results.Count > 0 ? DatabaseContext.GetInstance().Results.Max(x => x.Id) + 1 : 1;
+                DatabaseContext.GetInstance().Results.Add(result);
+
                 return StatusCode(StatusCodes.Status200OK, execution.Id);
             }
 

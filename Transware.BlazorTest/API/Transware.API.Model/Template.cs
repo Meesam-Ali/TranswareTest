@@ -7,7 +7,7 @@ namespace Transware.API.Model
         public int Id { get; set; }
         public Folder Folder { get; set; }
         public string Name { get; set; }
-        public DateTime ExecutionTime { get; set; }
+        public int ExecutionTime { get; set; }
         public Dictionary<string, DataType> Attributes { get; set; }
     }
 }

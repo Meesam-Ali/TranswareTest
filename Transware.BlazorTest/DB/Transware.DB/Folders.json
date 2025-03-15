@@ -1,0 +1,32 @@
+[
+    {
+        "Id": 1,
+        "FolderId": 0,
+        "Name": "Executions"
+    },
+    {
+        "Id": 3,
+        "FolderId": 0,
+        "Name": "Results"
+    },
+    {
+        "Id": 8,
+        "FolderId": 0,
+        "Name": "Templates"
+    },
+    {
+        "Id": 10,
+        "FolderId": 8,
+        "Name": "Subfolder1"
+    },
+    {
+        "Id": 11,
+        "FolderId": 10,
+        "Name": "Subfolder12"
+    },
+    {
+        "Id": 14,
+        "FolderId": 8,
+        "Name": "Subfolder2"
+    }
+]

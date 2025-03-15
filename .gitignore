@@ -15,3 +15,5 @@
 /Transware.BlazorTest/DB/Transware.Entities/obj
 /Transware.BlazorTest/UI/Transware.UI/bin/Debug/net8.0
 /Transware.BlazorTest/UI/Transware.UI/obj
+/Transware.BlazorTest/DB/Transware.DB/obj
+/Transware.BlazorTest/DB/Transware.DB/bin/Debug/net8.0
