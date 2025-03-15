@@ -9,3 +9,9 @@
 /Transware.BlazorTest/API/Transware.API.Model/bin/Debug/net8.0
 /Transware.BlazorTest/API/Transware.API.Model/obj
 *.user
+/Transware.BlazorTest/API/Transware.API/bin/Debug/net8.0
+/Transware.BlazorTest/API/Transware.API/obj
+/Transware.BlazorTest/DB/Transware.Entities/bin/Debug/net8.0
+/Transware.BlazorTest/DB/Transware.Entities/obj
+/Transware.BlazorTest/UI/Transware.UI/bin/Debug/net8.0
+/Transware.BlazorTest/UI/Transware.UI/obj

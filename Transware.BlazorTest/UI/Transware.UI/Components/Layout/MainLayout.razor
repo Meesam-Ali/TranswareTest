@@ -1,9 +1,21 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
+<div class="app-container">
+    <div class="menu">Menu</div>
+    <div class="toolbar">Toolbar</div>
+    <div class="main-content">
+        <div class="treeview">Treeview</div>
+        <div class="splitter"></div>
+        <div class="content-canvas">Content Canvas</div>
+    </div>
+    <div class="statusbar">Statusbar</div>
+</div>
+
+@Body
+@*  <div class="page">
     <div class="sidebar">
         <NavMenu />
-    </div>
+    </div> 
 
     <main>
         <div class="top-row px-4">
@@ -21,3 +33,5 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+ *@

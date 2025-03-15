@@ -94,3 +94,58 @@ main {
         right: 0.75rem;
         top: 0.5rem;
     }
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.menu, .toolbar, .statusbar {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.menu {
+    height: 40px;
+}
+
+.toolbar {
+    height: 30px;
+}
+
+.statusbar {
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1;
+    background-color: #1d4ed8;
+    color: white;
+    padding: 10px;
+}
+
+.treeview {
+    width: 20%;
+    background-color: #034efc;
+    padding: 10px;
+}
+
+.splitter {
+    width: 5px;
+    background-color: white;
+    cursor: ew-resize;
+}
+
+.content-canvas {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #1e40af;
+}
+
